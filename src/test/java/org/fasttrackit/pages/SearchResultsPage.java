@@ -9,7 +9,7 @@ import java.util.List;
 public class SearchResultsPage extends BasePage {
 
     @FindBy(css = "h3 ")
-    private List<WebElementFacade> listOfResults;
+    private List<WebElementFacade> listOfProductNames;
 
     @FindBy(css = "[data-product_sku]")
     private WebElementFacade addToCartButton;
@@ -18,7 +18,9 @@ public class SearchResultsPage extends BasePage {
     private WebElementFacade viewCartButton;
 
     public boolean isProductInList(String productName){
-        for (WebElementFacade element : listOfResults){
+
+        for (WebElementFacade element : listOfProductNames){
+            waitFor(listOfProductNames.get(0));
             if (element.getText().equalsIgnoreCase(productName)){
                 return true;
 

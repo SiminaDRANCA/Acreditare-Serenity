@@ -7,12 +7,7 @@ import org.junit.Assert;
 
 public class CartSteps extends BaseSteps{
 
-    public AccountPage accountPage;
-    public HomePage homePage;
-    public LoginPage loginPage;
-    public ShopPage shopPage;
-    public SearchResultsPage searchResultsPage;
-    public ShoppingCartPage shoppingCartPage;
+
 
 
     @Step
