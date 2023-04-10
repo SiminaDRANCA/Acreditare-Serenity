@@ -4,13 +4,17 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.support.FindBy;
 
-public class AccountPage extends PageObject {
+public class AccountPage extends BasePage{
 
-    @FindBy(css = ".hello strong")
+    @FindBy(css = ".welcome-user")
     private WebElementFacade welcomeTextElement;
 
+    @FindBy(css=".woocommerce-error")
+    private WebElementFacade errorMessageElement;
+
     public boolean isWelcomeText(String userName) {
-        return welcomeTextElement.containsOnlyText("Hello, " + userName + "!");
+        return welcomeTextElement.containsOnlyText("| Welcome " + userName + " !");
+
     }
 
     public String getWelcomeText(){
@@ -18,6 +22,27 @@ public class AccountPage extends PageObject {
     }
 
     public void userIsLoggedIn(String userName){
-        welcomeTextElement.shouldContainOnlyText("Hello, " + userName + "!");
+        welcomeTextElement.shouldContainOnlyText("| Welcome " + userName + " !");
+    }
+
+    public String getErrorMessage(){
+        return errorMessageElement.getText();
+    }
+
+    public void usersEmailInvalid(String errorMessage){
+        errorMessageElement.shouldContainOnlyText("ERROR: Invalid username. Lost your password?");
+
+    }
+
+    public void usersPasswordInvalid (String errorMessage){
+        errorMessageElement.shouldContainOnlyText("ERROR: The password you entered for the email address simina.dranca@yahoo.com is incorrect. Lost your password?");
+    }
+
+    public void noEmailLogin (String errorMessage){
+        errorMessageElement.shouldContainOnlyText("Error: Username is required.");
+    }
+
+    public void noPasswordLogin (String errorMessage){
+        errorMessageElement.shouldContainOnlyText("ERROR: The password field is empty.");
     }
 }

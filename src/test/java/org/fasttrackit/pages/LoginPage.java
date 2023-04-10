@@ -5,15 +5,15 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 
-public class LoginPage extends PageObject {
+public class LoginPage extends BasePage {
 
-    @FindBy(id = "email")
+    @FindBy(id = "username")
     private WebElementFacade emailField;
 
-    @FindBy(id =  "pass")
+    @FindBy(id = "password")
     private WebElementFacade passwordField;
 
-    @FindBy(id = "send2")
+    @FindBy(css = "[value='Login']")
     private WebElementFacade loginButton;
 
     public void setEmailField(String value){
